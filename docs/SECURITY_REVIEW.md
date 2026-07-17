@@ -12,6 +12,6 @@ Controls reviewed:
 - `X-Content-Type-Options`, strict referrer policy, denied camera/microphone/geolocation, frame denial
 - external links opening new tabs use `noreferrer`
 - project claims disclose simulation, health, provider, and production limitations
-- dependency audit, secret scan, and pull-request dependency review workflows
+- dependency audit and secret-scan workflows on pull requests, main, and a weekly schedule
 
 Residual risks: external GitHub raw-media availability, third-party dependency compromise, deployment-account configuration, and the limited protection offered by headers if the deployment platform does not apply `vercel.json`. The CSP currently permits inline scripts/styles required by the statically exported Next.js runtime; a nonce/hash policy would be stronger but needs platform-specific integration.
