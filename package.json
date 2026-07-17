@@ -1,0 +1,53 @@
+{
+  "name": "jashwanth-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve@14.2.6 out",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "check:links": "node scripts/check-links.mjs",
+    "verify": "npm run lint && npm run typecheck && npm test && npm run build && npm run check:links"
+  },
+  "dependencies": {
+    "@react-three/drei": "10.7.7",
+    "@react-three/fiber": "9.6.1",
+    "gsap": "3.15.0",
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "three": "0.185.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1",
+    "@axe-core/playwright": "4.12.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/node": "22.20.1",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@types/three": "0.185.1",
+    "@vitest/coverage-v8": "4.1.10",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.10",
+    "jsdom": "29.1.1",
+    "prettier": "3.9.5",
+    "serve": "14.2.6",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
+  }
+}
