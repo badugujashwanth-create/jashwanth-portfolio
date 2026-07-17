@@ -17,7 +17,7 @@ export function RecruiterSnapshot() {
           Each featured project links directly to architecture, test evidence, limitations, a real
           repository, and a verified demonstration.
         </p>
-        <Link className="text-link" href="/recruiter/">
+        <Link className="text-link" href="/recruiter/" prefetch={false}>
           Open the fast, printable recruiter route <span aria-hidden="true">↗</span>
         </Link>
       </div>

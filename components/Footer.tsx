@@ -13,11 +13,11 @@ export function Footer() {
         <a className="button button-primary" href="https://github.com/badugujashwanth-create" target="_blank" rel="noreferrer">
           Contact via GitHub
         </a>
-        <Link className="button button-secondary" href="/recruiter/">Recruiter view</Link>
+        <Link className="button button-secondary" href="/recruiter/" prefetch={false}>Recruiter view</Link>
       </div>
       <div className="footer-meta">
         <span>Systems in Motion / 2026</span>
-        <Link href="/privacy/">Privacy</Link>
+        <Link href="/privacy/" prefetch={false}>Privacy</Link>
         <a href="https://github.com/badugujashwanth-create/jashwanth-portfolio" target="_blank" rel="noreferrer">Source ↗</a>
       </div>
     </footer>

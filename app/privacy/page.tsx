@@ -14,7 +14,7 @@ export default function PrivacyPage() {
         services. The optional WebGL quality selector reads only browser capability signals in the
         current session and does not transmit them.
       </p>
-      <Link className="text-link" href="/">Return home</Link>
+      <Link className="text-link" href="/" prefetch={false}>Return home</Link>
     </main>
   );
 }

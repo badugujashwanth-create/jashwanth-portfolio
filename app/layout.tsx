@@ -39,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="en">
       <body>
-        <Link className="skip-link" href="#main-content">
+        <Link className="skip-link" href="#main-content" prefetch={false}>
           Skip to content
         </Link>
         <SiteHeader />

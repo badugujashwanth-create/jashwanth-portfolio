@@ -21,9 +21,8 @@ export function FeaturedJourney({ projects }: { projects: Project[] }) {
         const copy = project.querySelector(".journey-copy");
         gsap.fromTo(
           [visual, copy],
-          { opacity: 0.3, y: 54 },
+          { y: 54 },
           {
-            opacity: 1,
             y: 0,
             duration: 0.85,
             stagger: 0.1,
@@ -84,7 +83,7 @@ export function FeaturedJourney({ projects }: { projects: Project[] }) {
                 </div>
               </dl>
               <div className="project-actions">
-                <Link className="button button-primary" href={`/work/${project.slug}/`}>
+                <Link className="button button-primary" href={`/work/${project.slug}/`} prefetch={false}>
                   Open case study
                 </Link>
                 <a className="text-link" href={project.repositoryUrl} target="_blank" rel="noreferrer">

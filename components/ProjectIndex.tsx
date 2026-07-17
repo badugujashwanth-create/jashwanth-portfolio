@@ -45,7 +45,7 @@ export function ProjectIndex({ projects, categories }: { projects: Project[]; ca
             <p className="contribution"><strong>Contribution:</strong> {project.contribution}</p>
             <p className="technologies">{project.technologies.join(" · ")}</p>
             <div className="index-actions">
-              <Link href={`/work/${project.slug}/`}>Case study</Link>
+              <Link href={`/work/${project.slug}/`} prefetch={false}>Case study</Link>
               <a href={project.repositoryUrl} target="_blank" rel="noreferrer">Repository ↗</a>
               {project.videoUrl ? <a href={project.videoUrl} target="_blank" rel="noreferrer">Demo ↗</a> : null}
             </div>

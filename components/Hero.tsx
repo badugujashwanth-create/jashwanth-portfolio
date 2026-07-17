@@ -26,6 +26,7 @@ export function Hero() {
   const [quality, setQuality] = useState<RenderQuality>("static");
   const [paused, setPaused] = useState(false);
   const [skipped, setSkipped] = useState(false);
+  const [sceneRequested, setSceneRequested] = useState(false);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -46,11 +47,16 @@ export function Hero() {
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  const showCanvas = quality !== "static" && !skipped;
+  const showCanvas = quality !== "static" && !skipped && sceneRequested;
 
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-scene" data-quality={showCanvas ? quality : "static"}>
+      <div
+        className="hero-scene"
+        data-quality={showCanvas ? quality : "static"}
+        onPointerEnter={() => quality !== "static" && setSceneRequested(true)}
+        onTouchStart={() => quality !== "static" && setSceneRequested(true)}
+      >
         {showCanvas ? <SystemsScene quality={quality} paused={paused} /> : <StaticSystem />}
       </div>
       <div className="hero-grid" aria-hidden="true" />
@@ -62,10 +68,10 @@ export function Hero() {
           platforms, migration controls, and grounded data products.
         </p>
         <div className="hero-actions">
-          <Link className="button button-primary" href="#featured">
+          <Link className="button button-primary" href="#featured" prefetch={false}>
             Explore projects
           </Link>
-          <Link className="button button-secondary" href="/recruiter/">
+          <Link className="button button-secondary" href="/recruiter/" prefetch={false}>
             Recruiter view
           </Link>
         </div>
@@ -73,6 +79,11 @@ export function Hero() {
           <button type="button" onClick={() => setSkipped(true)} disabled={skipped}>
             {skipped ? "Static experience active" : "Skip experience"}
           </button>
+          {quality !== "static" && !skipped && !sceneRequested ? (
+            <button type="button" onClick={() => setSceneRequested(true)}>
+              Start visual system
+            </button>
+          ) : null}
           {showCanvas ? (
             <button type="button" onClick={() => setPaused((value) => !value)}>
               {paused ? "Resume motion" : "Pause motion"}

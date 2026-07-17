@@ -108,11 +108,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         <section className="related-section" aria-labelledby="related-title">
           <h2 id="related-title">Related systems</h2>
-          <div>{related.map((item) => item ? <Link key={item.slug} href={`/work/${item.slug}/`}>{item.displayName}<span>↗</span></Link> : null)}</div>
+          <div>{related.map((item) => item ? <Link key={item.slug} href={`/work/${item.slug}/`} prefetch={false}>{item.displayName}<span>↗</span></Link> : null)}</div>
         </section>
       </div>
 
-      <Link className="next-project" href={`/work/${nextProject.slug}/`}>
+      <Link className="next-project" href={`/work/${nextProject.slug}/`} prefetch={false}>
         <span>Next system</span>
         <strong>{nextProject.displayName}</strong>
       </Link>

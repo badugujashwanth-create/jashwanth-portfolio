@@ -68,7 +68,7 @@ export default function RecruiterPage() {
                   <div><dt>Interview topic</dt><dd>{project.challenge}</dd></div>
                 </dl>
                 <div className="recruiter-links">
-                  <Link href={`/work/${project.slug}/`}>Case study</Link>
+                  <Link href={`/work/${project.slug}/`} prefetch={false}>Case study</Link>
                   <a href={project.repositoryUrl} target="_blank" rel="noreferrer">Repository ↗</a>
                   {project.videoUrl ? <a href={project.videoUrl} target="_blank" rel="noreferrer">Demo ↗</a> : null}
                   {project.liveDemoUrl ? <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">Live demo ↗</a> : null}
@@ -91,7 +91,7 @@ export default function RecruiterPage() {
 
       <footer className="recruiter-footer">
         <a href="https://github.com/badugujashwanth-create" target="_blank" rel="noreferrer">Contact through verified GitHub profile ↗</a>
-        <Link href="/">Return to cinematic view</Link>
+        <Link href="/" prefetch={false}>Return to cinematic view</Link>
       </footer>
     </main>
   );

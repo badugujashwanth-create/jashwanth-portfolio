@@ -26,7 +26,7 @@ export function Capabilities() {
           </article>
         ))}
       </div>
-      <Link className="text-link" href="/recruiter/">
+      <Link className="text-link" href="/recruiter/" prefetch={false}>
         Map capabilities to projects in Recruiter View ↗
       </Link>
     </section>

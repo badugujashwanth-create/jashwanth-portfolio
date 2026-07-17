@@ -17,7 +17,7 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <Link className="monogram" href="/" aria-label="Jashwanth Badugu home">
+      <Link className="monogram" href="/" aria-label="JB/SYS — Jashwanth Badugu home" prefetch={false}>
         JB<span aria-hidden="true">/</span>SYS
       </Link>
       <button
@@ -35,6 +35,7 @@ export function SiteHeader() {
           <Link
             key={href}
             href={href}
+            prefetch={false}
             aria-current={pathname === href ? "page" : undefined}
             onClick={() => setOpen(false)}
           >
