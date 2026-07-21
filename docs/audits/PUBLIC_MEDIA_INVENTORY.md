@@ -35,12 +35,12 @@ Every package below uses the exact four deployed paths `demo.mp4`, `demo.webm`, 
 | Zettalogix                  | `zettalogix-migration-suite/docs/demo/demo.*`           | `/media/zettalogix/`                  | 5:40.008 | VP9/Opus      | H.264/AAC       | 5,063,735 / 8,043,809 / 1,763 / 279,776   | Pass                      | Reused; transcoded only                              |
 | WorkHub OS                  | `Work_OS/docs/demo/demo.*`                              | `/media/workhub/`                     | 5:42.728 | VP9/Opus      | H.264/AAC       | 13,451,842 / 10,648,238 / 1,491 / 375,245 | Pass                      | Reused; transcoded only                              |
 | Neutro                      | `Neutro/docs/demo/demo.*`                               | `/media/neutro/`                      | 3:15.920 | VP8/Opus      | H.264/AAC       | 4,999,311 / 13,897,506 / 1,760 / 72,853   | Pass                      | Phase 3 narrated release walkthrough                 |
-| ShadowOps                   | `shadowops-hackathon/docs/demo/demo.*`                  | `/media/shadowops/`                   | 0:55.040 | VP8, no audio | H.264, no audio | 552,893 / 2,413,675 / 409 / 50,519        | Pass                      | Reused; captioned; no fake audio added               |
+| ShadowOps                   | `shadowops-hackathon/docs/demo/demo.*`                  | `/media/shadowops/`                   | 3:20.970 | VP8/Opus      | H.264/AAC       | 6,091,283 / 13,304,118 / 1,011 / 51,828  | Pass                      | Narrated held-candidate workflow replacement         |
 | HYD VNTG                    | `thrifty_vintagegarage/docs/demo/demo.*`                | `/media/hyd-vntg/`                    | 3:03.120 | VP8/Opus      | H.264/AAC       | 4,962,016 / 11,684,036 / 1,294 / 428,569 | Pass                      | Phase 3 narrated v1.0.0 workflow replacement         |
-| ParkAlert                   | `Parking-Alert-/docs/demo/demo.*`                       | `/media/parkalert/`                   | 0:55.120 | VP8, no audio | H.264, no audio | 416,791 / 1,636,905 / 420 / 72,228        | Pass                      | Reused; captioned; no fake audio added               |
+| ParkAlert                   | `Parking-Alert-/docs/demo/demo.*`                       | `/media/parkalert/`                   | 3:08.615 | VP8/Opus      | H.264/AAC       | 4,017,449 / 8,952,214 / 925 / 62,128      | Pass                      | Narrated held-candidate workflow replacement         |
 | Cricket Web poster          | `Cricket_chatbot_frontend/docs/demo/demo-thumbnail.png` | `/media/cricket-web/poster.png`       |      n/a | n/a           | n/a             | 154,863                                   | Pass                      | Poster retained; outdated web recording not promoted |
 
-At Phase 2 close, the portfolio, Neutro, ShadowOps, HYD VNTG, and ParkAlert recordings were silent source captures with caption files; Phase 2 did not invent narration or create replacement recordings. The later authorized serial project program replaced Neutro and HYD VNTG with reviewed narrated walkthroughs after their workflows materially changed. The portfolio, ShadowOps, and ParkAlert sources remain honestly labeled as silent.
+At Phase 2 close, the portfolio, Neutro, ShadowOps, HYD VNTG, and ParkAlert recordings were silent source captures with caption files; Phase 2 did not invent narration or create replacement recordings. The later authorized serial project program replaced Neutro and HYD VNTG after their released workflows changed, then replaced ShadowOps and ParkAlert after their held candidate workflows materially changed. The portfolio source remains honestly labeled as silent. Candidate media is public evidence, not a release claim.
 
 ## Portfolio image and social-card manifest
 
@@ -56,8 +56,8 @@ All paths below are served from the canonical site. Actual MIME equals expected 
 | `/assets/projects/neutro.png`                      |  72,853 | 1280×720   | `image/png`     | Project image / Current v0.6.0 poster         |
 | `/assets/projects/nira.png`                        | 221,185 | 1280×640   | `image/png`     | Project image / Working                       |
 | `/assets/projects/niyamguard.png`                  | 243,767 | 1280×640   | `image/png`     | Project image / Working                       |
-| `/assets/projects/parking-alert.png`               |  72,228 | 1280×720   | `image/png`     | Project image / Working                       |
-| `/assets/projects/shadowops.png`                   |  50,916 | 1280×784   | `image/png`     | Project image / Working                       |
+| `/assets/projects/parking-alert.png`               |  62,128 | 1280×720   | `image/png`     | Project image / Current held-candidate poster |
+| `/assets/projects/shadowops.png`                   |  51,828 | 1280×720   | `image/png`     | Project image / Current held-candidate poster |
 | `/assets/projects/social-media-control-center.png` | 231,642 | 1280×640   | `image/png`     | Project image / Working                       |
 | `/assets/projects/workhub-os.png`                  | 445,445 | 1280×720   | `image/png`     | Project image / Working                       |
 | `/assets/projects/zettalogix-migration-suite.png`  | 125,847 | 1280×720   | `image/png`     | Project image / Working                       |
@@ -91,11 +91,24 @@ The HYD VNTG card previously used a 1280×6541 full-page image inside a fixed fr
 | `zettalogix-migration-suite`  | `docs/demo/demo-thumbnail.png`            | `/work/zettalogix-migration-suite/`  | MP4, WebM, VTT             | Working                                         |
 | `workhub-os`                  | `docs/demo/demo-thumbnail.png`            | `/work/workhub-os/`                  | MP4, WebM, VTT             | Working                                         |
 | `Neutro`                      | `docs/demo/demo-thumbnail.png`            | `/work/neutro/`                      | MP4, WebM, VTT             | Working                                         |
-| `shadowops-hackathon`         | `docs/demo/demo-thumbnail.png`            | `/work/shadowops/`                   | MP4, WebM, VTT             | Working                                         |
+| `shadowops-hackathon`         | Candidate `docs/demo/demo-thumbnail.png`  | `/work/shadowops/`                   | MP4, WebM, VTT             | Working; candidate PR #2 remains unmerged        |
 | `hyd-vntg-storefront`         | `docs/demo/demo-thumbnail.png`            | Repository MP4                       | MP4, WebM, VTT, case study | Working                                         |
-| `parkalert-india`             | Same-origin `/media/parkalert/poster.png` | `/work/parking-alert/`               | MP4, WebM, VTT             | Working; default branch has no local demo files |
+| `parkalert-india`             | Candidate `docs/demo/demo-thumbnail.png`  | `/work/parking-alert/`               | MP4, WebM, VTT             | Working; candidate PR #3 remains unmerged        |
 
-The profile README uses case-study playback plus direct same-origin MP4/WebM/VTT links for its six highlighted systems. No README or profile video link uses `/blob/`, raw GitHub media, localhost, a Windows path, or a private repository.
+The profile README uses case-study playback plus direct same-origin MP4/WebM/VTT links for highlighted and verification-held systems. No README or profile video link uses `/blob/`, raw GitHub media, localhost, a Windows path, or a private repository.
+
+### Held-candidate checksums
+
+| Project | Asset | SHA-256 |
+| --- | --- | --- |
+| ParkAlert | MP4 | `f21ec16fa77844cc1574e16e2a5ef0d1a1469f10b05c3e757302d4ee86b06fa3` |
+| ParkAlert | WebM | `f1867c757369fa419c35b8e4967cc2a68c368b6a6d2d9497f6e94b6c29005bfb` |
+| ParkAlert | captions | `781e3386fda39ea0bf87e3c7b5cdf5ec29d1414967a32ad595897ecb8bba2eba` |
+| ParkAlert | poster | `4b72a9e9c9525deeacf1034fadc50d20cf7357dc45a5cb48f6a1e52956c06dbe` |
+| ShadowOps | MP4 | `981802c890571f6775056723c7aa9380d17f503b9f61560513e4778fe3c15caa` |
+| ShadowOps | WebM | `8ce0d43ff32496da1f41094e3717c25abac306059cea47f50e90ec49cbc11998` |
+| ShadowOps | captions | `b20be52b6dcd61651e3eb1b836307c02680085232404fa4210b327e9c49544ed` |
+| ShadowOps | poster | `d2c2b468ee0ecd63ec3d6bf0a94257923577334e95a452ff413a2a0e05b43fb1` |
 
 ## GitHub release media
 
