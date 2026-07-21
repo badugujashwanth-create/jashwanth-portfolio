@@ -1,16 +1,22 @@
 WEBVTT
 
-00:00.000 --> 00:05.000
-ShadowOps Safety Lab
+00:00.000 --> 00:24.000
+ShadowOps is shown as a collaborative experimental fork using the real laptop-safe local runtime, not a reproduced CUDA training run.
 
-00:05.000 --> 00:15.000
-The problem, intended user, and starting point.
+00:24.000 --> 00:50.000
+Mission Control explains a synthetic GitHub supply-chain scenario, risk evidence, and a held supervisor decision.
 
-00:15.000 --> 00:35.000
-A walkthrough of the primary workflow using safe demonstration data.
+00:50.000 --> 01:18.000
+The S3 public-access scenario is repository-provided synthetic data with no cloud account or external action.
 
-00:35.000 --> 00:46.000
-Architecture, technology boundaries, and verified behavior.
+01:18.000 --> 01:52.000
+The browser calls the local FastAPI decision endpoint and clearly labels the result as local with no production execution.
 
-00:46.000 --> 00:55.000
-Current status, known limitation, and repository owner badugujashwanth-create.
+01:52.000 --> 02:18.000
+A local-only FORK override and quarantine view demonstrate safe UI states without changing infrastructure.
+
+02:18.000 --> 02:46.000
+Benchmark values load directly from the checked-in laptop-safe report; CUDA checkpoint comparison was not reproduced here.
+
+02:46.000 --> 03:20.900
+The incident report closes the workflow. Attribution, upstream ownership, and model-evaluation gates remain explicit.

@@ -10,7 +10,7 @@ Detailed inventory: [PUBLIC_MEDIA_INVENTORY.md](PUBLIC_MEDIA_INVENTORY.md)
 
 Phase 2 media visibility and delivery repair is complete. No new product features, Product Design exploration, screenshots, or recordings were created.
 
-The later authorized serial project program replaced Neutro and HYD VNTG media only after their qualified workflows made the Phase 2 captures outdated. Both replacements are publicly verified. HYD VNTG production serves the v1.0.0 package with native MP4/WebM/VTT/PNG MIME types; logged-out desktop and mobile Chromium loaded all seven caption cues, reached media ready state 4, and played the 183.12-second video inside the viewport.
+The later authorized serial project program replaced Neutro and HYD VNTG media only after their qualified workflows made the Phase 2 captures outdated. Both released replacements are publicly verified. It subsequently replaced ShadowOps and ParkAlert media after their verified candidate workflows made the 55-second silent captures outdated. Those two packages are portfolio evidence only: their source PRs remain deliberately unmerged and unreleased behind ownership/security gates.
 
 - All 75 canonical portfolio image/video/caption assets return HTTP 200, non-zero bytes, and their exact expected MIME type while logged out.
 - All 11 case-study players work in logged-out Chrome desktop, Edge desktop with WebGL disabled, and a throttled Chrome mobile context.
@@ -104,7 +104,8 @@ README media-link commits:
 
 ## Honest limitations and deferred recording work
 
-- At Phase 2 close, the portfolio, Neutro, ShadowOps, HYD VNTG, and ParkAlert sources had no audio stream and were labeled without narration claims. The later authorized serial project program replaced Neutro and HYD VNTG with reviewed narrated walkthroughs after their qualified workflows changed; the portfolio, ShadowOps, and ParkAlert remain silent and captioned.
+- At Phase 2 close, the portfolio, Neutro, ShadowOps, HYD VNTG, and ParkAlert sources had no audio stream and were labeled without narration claims. The later authorized serial project program replaced Neutro, HYD VNTG, ShadowOps, and ParkAlert with reviewed narrated walkthroughs after their qualified workflows changed. The portfolio walkthrough remains silent and captioned.
+- ParkAlert candidate PR #3 is held for Firebase ownership/security verification. ShadowOps candidate PR #2 is held for contributor, ownership, licensing, and model-evidence verification. Neither portfolio video implies a merge or release.
 - The older Cricket Web recording remains historical repository evidence but is not an active public playback source because it is out of date.
 - GitHub release download responses cannot be made inline-media MIME from repository code. Correct inline delivery is provided by the canonical same-origin site instead.
 - No private duplicate media was published.

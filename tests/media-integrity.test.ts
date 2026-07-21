@@ -17,9 +17,9 @@ const recordings = [
   { directory: "zettalogix", duration: 340, narrated: true },
   { directory: "workhub", duration: 342.72, narrated: true },
   { directory: "neutro", duration: 195.92, narrated: true },
-  { directory: "shadowops", duration: 55.04, narrated: false },
+  { directory: "shadowops", duration: 200.97, narrated: true },
   { directory: "hyd-vntg", duration: 183.12, narrated: true },
-  { directory: "parkalert", duration: 55.12, narrated: false }
+  { directory: "parkalert", duration: 188.615, narrated: true }
 ] as const;
 
 function assertExactPath(relativePath: string) {
