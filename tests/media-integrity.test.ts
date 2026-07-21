@@ -16,7 +16,7 @@ const recordings = [
   { directory: "heart-analysis", duration: 257.48, narrated: true },
   { directory: "zettalogix", duration: 340, narrated: true },
   { directory: "workhub", duration: 342.72, narrated: true },
-  { directory: "neutro", duration: 55.04, narrated: false },
+  { directory: "neutro", duration: 195.92, narrated: true },
   { directory: "shadowops", duration: 55.04, narrated: false },
   { directory: "hyd-vntg", duration: 58.24, narrated: false },
   { directory: "parkalert", duration: 55.12, narrated: false }

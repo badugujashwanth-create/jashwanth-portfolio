@@ -16,7 +16,7 @@ const projects = [
   ["heart-analysis", "Heart Analysis", "Educational signals with explicit limits", "#ff4d8d"],
   ["zettalogix-migration-suite", "Zettalogix Migration Suite", "Migration state without unsafe external actions", "#4e7cff"],
   ["workhub-os", "WorkHub OS", "Role-based operational modules", "#43d17d"],
-  ["neutro", "Neutro", "Experimental accessibility adaptation", "#45a3ff"],
+  ["neutro", "Neutro", "User-controlled, explainable adaptation", "#45a3ff"],
   ["shadowops", "ShadowOps", "Attributed collaborative security experiment", "#9d7bff"],
   ["hyd-vntg-storefront", "HYD VNTG Storefront", "Fail-closed storefront prototype", "#db9464"],
   ["parking-alert", "Parking Alert", "Experimental workflow under a Firebase security hold", "#ff9f43"]
