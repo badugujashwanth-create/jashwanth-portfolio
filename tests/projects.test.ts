@@ -14,11 +14,14 @@ describe("portfolio content model", () => {
     expect(projectBySlug.get("shadowops")?.status).toContain("fork");
   });
 
-  test("uses HTTPS evidence links and local poster paths", () => {
+  test("uses HTTPS evidence links and same-origin media paths", () => {
     for (const project of projects) {
       expect(new URL(project.repositoryUrl).protocol).toBe("https:");
-      if (project.videoUrl) expect(new URL(project.videoUrl).protocol).toBe("https:");
       expect(project.videoPoster).toMatch(/^\/assets\/projects\/.+\.png$/);
+      expect(project.video.mp4).toMatch(/^\/media\/.+\.mp4$/);
+      expect(project.video.webm).toMatch(/^\/media\/.+\.webm$/);
+      expect(project.video.captions).toMatch(/^\/media\/.+\.vtt$/);
+      expect(project.video.poster).toMatch(/^\/media\/.+\.png$/);
     }
   });
 

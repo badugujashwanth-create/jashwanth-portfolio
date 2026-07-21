@@ -4,7 +4,7 @@ An evidence-based software and AI engineering portfolio. The experience maps rea
 
 - Cinematic, progressively enhanced homepage
 - Fast, printable `/recruiter` route with six evidence-led projects
-- Eleven project case studies with architecture, workflow, testing, security notes, limitations, and video evidence where verified
+- Eleven project case studies with architecture, workflow, testing, security notes, limitations, and same-origin MP4/WebM video evidence
 - Static export, responsive design, reduced-motion support, WebGL fallback, SEO metadata, social cards, and security headers
 - Recorded walkthrough with captions, poster, script, and storyboard in `docs/demo`
 
@@ -32,7 +32,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-`npm run verify` runs lint, TypeScript, unit/component tests, the static production build, and internal/critical evidence link checks. The browser suite covers desktop and mobile routes, keyboard flow, reduced motion, forced WebGL failure, core project content, and serious/critical axe findings.
+`npm run verify` runs lint, TypeScript, unit/component and media-integrity tests, the static production build, and internal/critical evidence link checks. The browser suite covers desktop and mobile routes, keyboard flow, reduced motion, forced WebGL failure, core project content, and serious/critical axe findings.
 
 ## Architecture
 
@@ -45,7 +45,8 @@ Next.js statically generates every route. React Three Fiber is dynamically loade
 - [Performance report](docs/PERFORMANCE_REPORT.md)
 - [Accessibility report](docs/ACCESSIBILITY_REPORT.md)
 - [Security review](docs/SECURITY_REVIEW.md)
-- [Portfolio walkthrough (WebM)](docs/demo/portfolio-demo.webm) · [Captions](docs/demo/portfolio-demo-captions.vtt) · [Script](docs/demo/DEMO_SCRIPT.md) · [Storyboard](docs/demo/STORYBOARD.md)
+- [![Watch the portfolio walkthrough](docs/demo/demo-thumbnail.png)](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo.mp4)
+- [Open MP4](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo.mp4) · [Download WebM](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo.webm) · [Captions](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo-captions.vtt) · [Script](docs/demo/DEMO_SCRIPT.md) · [Storyboard](docs/demo/STORYBOARD.md)
 
 ## Claims and contact
 

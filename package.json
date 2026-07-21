@@ -14,6 +14,8 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "check:links": "node scripts/check-links.mjs",
+    "check:media": "vitest run tests/media-integrity.test.ts",
+    "check:media:public": "node scripts/check-public-media.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run build && npm run check:links"
   },
   "dependencies": {

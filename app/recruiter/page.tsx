@@ -70,7 +70,7 @@ export default function RecruiterPage() {
                 <div className="recruiter-links">
                   <Link href={`/work/${project.slug}/`} prefetch={false}>Case study</Link>
                   <a href={project.repositoryUrl} target="_blank" rel="noreferrer">Repository ↗</a>
-                  {project.videoUrl ? <a href={project.videoUrl} target="_blank" rel="noreferrer">Demo ↗</a> : null}
+                  <a href={project.video.mp4} target="_blank" rel="noreferrer">Demo ↗</a>
                   {project.liveDemoUrl ? <a href={project.liveDemoUrl} target="_blank" rel="noreferrer">Live demo ↗</a> : null}
                 </div>
               </div>

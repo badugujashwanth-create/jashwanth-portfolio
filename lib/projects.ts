@@ -6,6 +6,13 @@ const themeSchema = z.object({
   signature: z.enum(["rules", "neural", "streams", "trajectory", "pulse", "migration", "modules", "adaptive", "shield", "store"])
 });
 
+const videoSchema = z.object({
+  mp4: z.string().startsWith("/media/"),
+  webm: z.string().startsWith("/media/"),
+  captions: z.string().startsWith("/media/"),
+  poster: z.string().startsWith("/media/")
+});
+
 export const projectSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
   displayName: z.string().min(2),
@@ -20,7 +27,7 @@ export const projectSchema = z.object({
   repositoryUrl: z.string().url(),
   secondaryRepositoryUrl: z.string().url().optional(),
   liveDemoUrl: z.string().url().optional(),
-  videoUrl: z.string().url().optional(),
+  video: videoSchema,
   videoPoster: z.string().startsWith("/"),
   architecture: z.array(z.string()).min(2),
   workflow: z.array(z.string()).min(3),
@@ -39,7 +46,13 @@ export const projectSchema = z.object({
 export type Project = z.infer<typeof projectSchema>;
 
 const owner = "https://github.com/badugujashwanth-create";
-const raw = "https://raw.githubusercontent.com/badugujashwanth-create";
+
+const media = (project: string) => ({
+  mp4: `/media/${project}/demo.mp4`,
+  webm: `/media/${project}/demo.webm`,
+  captions: `/media/${project}/demo-captions.vtt`,
+  poster: `/media/${project}/poster.png`
+});
 
 const source: Project[] = [
   {
@@ -54,7 +67,7 @@ const source: Project[] = [
     technologies: ["React", "FastAPI", "SQLAlchemy", "Python", "scikit-learn"],
     categories: ["AI", "Automation", "Full Stack"],
     repositoryUrl: `${owner}/NiyamGuard`,
-    videoUrl: `${raw}/NiyamGuard/main/docs/demo/demo.webm`,
+    video: media("niyamguard"),
     videoPoster: "/assets/projects/niyamguard.png",
     architecture: ["FastAPI policy and service APIs", "SQLAlchemy persistence and synthetic fixtures", "React citizen/operator workflows", "Hybrid rule and assistant boundary"],
     workflow: ["Ingest a synthetic circular", "Extract and review proposed rules", "Compare versions and detect drift", "Publish a verified sandbox rule", "Explain eligibility with evidence"],
@@ -81,7 +94,7 @@ const source: Project[] = [
     technologies: ["Python", "pytest", "llama.cpp", "Local tools"],
     categories: ["AI", "Automation", "Security"],
     repositoryUrl: `${owner}/NIRA`,
-    videoUrl: `${raw}/NIRA/main/docs/demo/demo.webm`,
+    video: media("nira"),
     videoPoster: "/assets/projects/nira.png",
     architecture: ["Planner and specialist agents", "Permissioned tool adapters", "Memory and configuration boundary", "Optional local inference server"],
     workflow: ["Parse an operator goal", "Plan bounded steps", "Request permission for sensitive tools", "Execute or recover", "Store only allowed context"],
@@ -108,7 +121,7 @@ const source: Project[] = [
     technologies: ["Next.js", "FastAPI", "PostgreSQL", "Redis/RQ", "TypeScript", "Python"],
     categories: ["Full Stack", "Automation", "Data"],
     repositoryUrl: `${owner}/social-media-control-center`,
-    videoUrl: `${raw}/social-media-control-center/main/docs/demo/demo.webm`,
+    video: media("social-media-control-center"),
     videoPoster: "/assets/projects/social-media-control-center.png",
     architecture: ["Next.js static-capable operator UI", "FastAPI service and validation", "Connector abstraction", "Redis/RQ background state"],
     workflow: ["Compose channel-aware content", "Validate connection and schedule", "Queue background work", "Track result or failure", "Review operational state"],
@@ -136,7 +149,7 @@ const source: Project[] = [
     categories: ["AI", "Data", "Full Stack"],
     repositoryUrl: `${owner}/cricket-chatbot-api`,
     secondaryRepositoryUrl: `${owner}/cricket-chatbot-web`,
-    videoUrl: `${raw}/cricket-chatbot-web/main/docs/demo/demo.webm`,
+    video: media("cricket-api"),
     videoPoster: "/assets/projects/cricket-intelligence.png",
     architecture: ["React query client", "Express routing and typed responses", "Deterministic dataset services", "Optional local Chroma helper"],
     workflow: ["Normalize the question and entities", "Select a deterministic action", "Compute from available data", "Attach typed evidence", "Return unsupported/degraded guidance when necessary"],
@@ -163,7 +176,7 @@ const source: Project[] = [
     technologies: ["Flutter", "Dart", "Flask", "SQLAlchemy", "Python"],
     categories: ["Data", "Full Stack"],
     repositoryUrl: `${owner}/heart-analysis`,
-    videoUrl: `${raw}/heart-analysis/main/docs/demo/demo.webm`,
+    video: media("heart-analysis"),
     videoPoster: "/assets/projects/heart-analysis.png",
     architecture: ["Flutter web/mobile client", "Flask analysis API", "SQLAlchemy history boundary", "Explanation and report layer"],
     workflow: ["Enter validated educational inputs", "Run the bounded analysis", "Review explanation and limitations", "Inspect history or report"],
@@ -191,7 +204,7 @@ const source: Project[] = [
     categories: ["Migration", "Full Stack", "Automation"],
     repositoryUrl: `${owner}/zettalogix-migration-suite`,
     liveDemoUrl: "https://sharepoint-one.vercel.app/login?demo=1",
-    videoUrl: `${raw}/zettalogix-migration-suite/main/docs/demo/demo.webm`,
+    video: media("zettalogix"),
     videoPoster: "/assets/projects/zettalogix-migration-suite.png",
     architecture: ["React/Vite operator UI", "Electron wrapper", "Live API adapter", "In-memory synthetic adapter with session-scoped mode"],
     workflow: ["Enter the clearly labeled synthetic mode", "Inspect connections and migration jobs", "Create and start a job", "Pause and inspect history", "Export a synthetic CSV report"],
@@ -218,7 +231,7 @@ const source: Project[] = [
     technologies: ["Next.js", "Express", "MongoDB", "Socket.IO"],
     categories: ["Full Stack", "Automation"],
     repositoryUrl: `${owner}/workhub-os`,
-    videoUrl: `${raw}/workhub-os/main/docs/demo/demo.webm`,
+    video: media("workhub"),
     videoPoster: "/assets/projects/workhub-os.png",
     architecture: ["Next.js frontend", "Express API", "MongoDB models", "Socket.IO services"],
     workflow: ["Authenticate", "Enter a workspace", "Manage work and tasks"],
@@ -245,7 +258,7 @@ const source: Project[] = [
     technologies: ["React", "TypeScript", "Vite"],
     categories: ["Accessibility", "Experimental"],
     repositoryUrl: `${owner}/Neutro`,
-    videoUrl: `${raw}/Neutro/main/docs/demo/demo.webm`,
+    video: media("neutro"),
     videoPoster: "/assets/projects/neutro.png",
     architecture: ["React interface", "Preference state"],
     workflow: ["Choose preferences", "Apply adaptation", "Reset state"],
@@ -272,7 +285,7 @@ const source: Project[] = [
     technologies: ["Python", "Machine learning", "React"],
     categories: ["Security", "Experimental"],
     repositoryUrl: `${owner}/shadowops-hackathon`,
-    videoUrl: `${raw}/shadowops-hackathon/main/docs/demo/demo.webm`,
+    video: media("shadowops"),
     videoPoster: "/assets/projects/shadowops.png",
     architecture: ["Shared ML artifacts", "Lite runtime and frontend"],
     workflow: ["Review attribution", "Run lite checks", "Inspect shared artifacts"],
@@ -299,7 +312,7 @@ const source: Project[] = [
     technologies: ["React", "Vite", "JavaScript"],
     categories: ["Full Stack"],
     repositoryUrl: `${owner}/hyd-vntg-storefront`,
-    videoUrl: `${raw}/hyd-vntg-storefront/main/docs/demo/demo.webm`,
+    video: media("hyd-vntg"),
     videoPoster: "/assets/projects/hyd-vntg-storefront.png",
     architecture: ["React client", "Local demo store"],
     workflow: ["Browse catalog", "Manage cart", "Use configured local demo admin"],
@@ -326,7 +339,7 @@ const source: Project[] = [
     technologies: ["Flutter", "Dart", "Firebase"],
     categories: ["Full Stack", "Security", "Experimental"],
     repositoryUrl: `${owner}/parkalert-india`,
-    videoUrl: `${raw}/parkalert-india/main/docs/demo/demo.webm`,
+    video: media("parkalert"),
     videoPoster: "/assets/projects/parking-alert.png",
     architecture: ["Flutter mobile client", "Externally configured Firebase services"],
     workflow: ["Configure a device", "Create an alert", "Observe notification state"],

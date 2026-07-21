@@ -47,7 +47,7 @@ export function ProjectIndex({ projects, categories }: { projects: Project[]; ca
             <div className="index-actions">
               <Link href={`/work/${project.slug}/`} prefetch={false}>Case study</Link>
               <a href={project.repositoryUrl} target="_blank" rel="noreferrer">Repository ↗</a>
-              {project.videoUrl ? <a href={project.videoUrl} target="_blank" rel="noreferrer">Demo ↗</a> : null}
+              <a href={project.video.mp4} target="_blank" rel="noreferrer">Demo ↗</a>
             </div>
           </article>
         ))}

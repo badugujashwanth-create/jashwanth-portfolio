@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AccessibleVideo } from "@/components/AccessibleVideo";
 import { projectBySlug, projects } from "@/lib/projects";
 
 export const dynamicParams = false;
@@ -34,7 +35,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const index = projects.findIndex((item) => item.slug === project.slug);
   const nextProject = projects[(index + 1) % projects.length];
   const related = project.relatedProjects.map((relatedSlug) => projectBySlug.get(relatedSlug)).filter(Boolean);
-  const captions = project.videoUrl?.replace(/demo\.webm$/, "demo-captions.vtt");
 
   return (
     <main id="main-content" className="case-study" style={{ "--accent": project.theme.accent, "--glow": project.theme.glow } as React.CSSProperties}>
@@ -95,16 +95,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        {project.videoUrl ? (
-          <section className="demo-section" aria-labelledby="demo-title">
-            <div><p className="eyebrow">Verified demonstration</p><h2 id="demo-title">Rendered product behavior.</h2></div>
-            <video controls preload="metadata" poster={project.videoPoster}>
-              <source src={project.videoUrl} type="video/webm" />
-              {captions ? <track kind="captions" src={captions} srcLang="en" label="English" default /> : null}
-              Your browser cannot play this video. Use the repository demo link instead.
-            </video>
-          </section>
-        ) : null}
+        <section className="demo-section" aria-labelledby="demo-title">
+          <div><p className="eyebrow">Verified demonstration</p><h2 id="demo-title">Rendered product behavior.</h2></div>
+          <AccessibleVideo
+            {...project.video}
+            projectName={project.displayName}
+            repositoryUrl={project.repositoryUrl}
+          />
+        </section>
 
         <section className="related-section" aria-labelledby="related-title">
           <h2 id="related-title">Related systems</h2>

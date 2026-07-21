@@ -384,7 +384,13 @@ p { color: var(--muted); }
 .evidence-columns h3 { font-size: 1.2rem; letter-spacing: -0.02em; }
 .evidence-columns ul { padding-left: 1.1rem; color: var(--muted); }
 .demo-section { display: grid; grid-template-columns: 0.65fr 1.35fr; gap: 5rem; align-items: start; }
-.demo-section video { width: 100%; border: 1px solid var(--line); border-radius: 1rem; background: #000; }
+.media-player { min-width: 0; }
+.media-frame { aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: #000; }
+.media-frame video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+.media-status { min-height: 1.5rem; margin: 0.85rem 0 0; font-size: 0.9rem; }
+.media-status-error { color: #ffb4ab; }
+.media-actions { display: flex; flex-wrap: wrap; gap: 0.7rem 1rem; margin-top: 0.65rem; }
+.media-actions a { color: var(--ink); font-size: 0.9rem; }
 .related-section h2 { font-size: 2rem; }
 .related-section > div { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .related-section a { display: flex; justify-content: space-between; padding: 1.5rem; border: 1px solid var(--line); border-radius: 0.8rem; text-decoration: none; }
