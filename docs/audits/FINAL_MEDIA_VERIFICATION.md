@@ -10,13 +10,15 @@ Detailed inventory: [PUBLIC_MEDIA_INVENTORY.md](PUBLIC_MEDIA_INVENTORY.md)
 
 Phase 2 media visibility and delivery repair is complete. No new product features, Product Design exploration, screenshots, or recordings were created.
 
+The later authorized serial project program replaced Neutro and HYD VNTG media only after their qualified workflows made the Phase 2 captures outdated. Neutro is publicly verified; the current HYD VNTG synchronization branch carries the v1.0.0 narrated package and marks production delivery pending until merge/deploy checks pass.
+
 - All 75 canonical portfolio image/video/caption assets return HTTP 200, non-zero bytes, and their exact expected MIME type while logged out.
 - All 11 case-study players work in logged-out Chrome desktop, Edge desktop with WebGL disabled, and a throttled Chrome mobile context.
 - All players expose native controls, `playsInline`, MP4 then WebM fallback, captions, poster, direct open/download/caption/repository links, loading state, and a visible error fallback.
 - Playback, seeking, caption cues, native fullscreen entry/exit, viewport containment, homepage/project image decoding, and fallback recovery were exercised.
 - All 13 README thumbnails return HTTP 200 with `image/png` and open the verified case-study or portfolio media target.
 - All 187 tracked documentation images return HTTP 200 with the correct image MIME.
-- All 42 release-media downloads return HTTP 200 and non-zero bytes. Their GitHub API MIME is correct; GitHub's download CDN forces generic attachment MIME, so none is used inline.
+- All 50 release-media downloads return HTTP 200 and non-zero bytes. Their GitHub API MIME is correct; GitHub's download CDN forces generic attachment MIME, so none is used inline.
 - No active media link uses GitHub `/blob/`, raw GitHub playback, localhost, a Windows path, a private repository, or a stale Cricket Web recording.
 
 ## Repairs delivered
@@ -44,7 +46,7 @@ Phase 2 media visibility and delivery repair is complete. No new product feature
 | `npm run build`                | Static production generation, all 11 case studies                                                                                               | Passed, 18 routes generated      |
 | `npm run check:links`          | Built internal links and critical public evidence URLs                                                                                          | 0 broken                         |
 | `npm run check:media:public`   | All 75 deployed assets                                                                                                                          | HTTP 200, correct MIME, non-zero |
-| `npm run check:media:github`   | 42 release assets, 13 README thumbnails, 187 documentation images                                                                               | Passed                           |
+| `npm run check:media:github`   | 50 release assets, 13 README thumbnails, 187 documentation images                                                                               | Passed                           |
 | `npm run check:media:browsers` | 11 players × Chrome desktop, Edge desktop/WebGL disabled, Chrome mobile/throttled; forced failure fallback                                      | Passed                           |
 
 ## Browser evidence
@@ -101,7 +103,7 @@ README media-link commits:
 
 ## Honest limitations and deferred recording work
 
-- The portfolio, Neutro, ShadowOps, HYD VNTG, and ParkAlert source recordings have no audio stream. They have captions and are labeled without a narration claim. Adding narration would require a new recording/editing phase and was prohibited in this phase.
+- At Phase 2 close, the portfolio, Neutro, ShadowOps, HYD VNTG, and ParkAlert sources had no audio stream and were labeled without narration claims. The later authorized serial project program replaced Neutro and HYD VNTG with reviewed narrated walkthroughs after their qualified workflows changed; the portfolio, ShadowOps, and ParkAlert remain silent and captioned.
 - The older Cricket Web recording remains historical repository evidence but is not an active public playback source because it is out of date.
 - GitHub release download responses cannot be made inline-media MIME from repository code. Correct inline delivery is provided by the canonical same-origin site instead.
 - No private duplicate media was published.
