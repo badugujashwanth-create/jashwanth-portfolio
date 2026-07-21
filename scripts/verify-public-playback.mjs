@@ -11,7 +11,7 @@ const projects = [
   ["heart-analysis", 257],
   ["zettalogix-migration-suite", 340],
   ["workhub-os", 342],
-  ["neutro", 55],
+  ["neutro", 195.92],
   ["shadowops", 55],
   ["hyd-vntg-storefront", 58],
   ["parking-alert", 55]

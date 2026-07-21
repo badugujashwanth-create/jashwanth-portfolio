@@ -42,7 +42,7 @@ Twelve repository WebM demos were inspected as real 1280×720 files. Featured pr
 - ShadowOps is a collaborative fork. Upstream, team, and individual contributions are explicitly separated. It is an experimental archive entry, never a flagship.
 - Parking Alert remains excluded from the main story because deployed Firebase rules and console restrictions are unverified.
 - `thrifty_vintagegarag` is a private duplicate and is excluded.
-- Neutro remains experimental because accessibility-adaptation behavior lacks meaningful automated tests.
+- Neutro remains experimental despite deterministic rule and browser workflow tests because broader assistive-technology evidence and clinical/outcome validation are explicitly absent.
 - WorkHub remains a secondary project because its frontend and CORS tests pass but its authenticated database-backed primary workflow is not integration-tested.
 - HYD VNTG is a supporting storefront, not a featured engineering flagship.
 
