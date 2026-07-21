@@ -12,9 +12,9 @@ const projects = [
   ["zettalogix-migration-suite", 340],
   ["workhub-os", 342],
   ["neutro", 195.92],
-  ["shadowops", 55],
+  ["shadowops", 200.97],
   ["hyd-vntg-storefront", 183.12],
-  ["parking-alert", 55]
+  ["parking-alert", 188.615]
 ];
 
 async function verifyMode({ name, executablePath, contextOptions = {}, args = [], throttle = false }) {
@@ -87,6 +87,16 @@ async function verifyMode({ name, executablePath, contextOptions = {}, args = []
 
     const heroImage = page.locator(".case-poster img");
     await heroImage.waitFor({ state: "visible" });
+    await heroImage.evaluate(async (element) => {
+      if (!element.complete) {
+        await new Promise((resolve, reject) => {
+          const timer = setTimeout(() => reject(new Error("project image timeout")), 15_000);
+          element.addEventListener("load", () => { clearTimeout(timer); resolve(); }, { once: true });
+          element.addEventListener("error", (error) => { clearTimeout(timer); reject(error); }, { once: true });
+        });
+      }
+      await element.decode();
+    });
     const heroState = await heroImage.evaluate((element) => ({ complete: element.complete, height: element.naturalHeight, width: element.naturalWidth }));
     const heroBox = await heroImage.boundingBox();
     assert.ok(heroState.complete && heroState.width > 0 && heroState.height > 0, `${name}/${slug}: project image failed to decode`);
