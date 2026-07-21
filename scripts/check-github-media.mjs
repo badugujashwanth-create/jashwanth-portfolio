@@ -32,6 +32,14 @@ const expectedTypes = new Map([
   [".vtt", "text/vtt"],
   [".png", "image/png"]
 ]);
+const imageTypes = new Map([
+  [".png", "image/png"],
+  [".jpg", "image/jpeg"],
+  [".jpeg", "image/jpeg"],
+  [".webp", "image/webp"],
+  [".gif", "image/gif"],
+  [".svg", "image/svg+xml"]
+]);
 
 let forcedDownloads = 0;
 
@@ -52,6 +60,7 @@ async function publicAsset(url, expectedType, allowAttachment = false) {
 
 let releaseMedia = 0;
 let readmeThumbnails = 0;
+const sourceImages = new Map();
 for (const repository of repositories) {
   const readmeUrl = `https://raw.githubusercontent.com/${owner}/${repository}/main/README.md`;
   const readmeResponse = await fetch(readmeUrl, { signal: AbortSignal.timeout(30_000) });
@@ -78,6 +87,18 @@ for (const repository of repositories) {
   });
   assert.equal(releasesResponse.status, 200, `${repository}: public releases API unavailable`);
   const releases = await releasesResponse.json();
+
+  const treeResponse = await fetch(`https://api.github.com/repos/${owner}/${repository}/git/trees/main?recursive=1`, {
+    headers: { Accept: "application/vnd.github+json", "User-Agent": "portfolio-media-verifier" },
+    signal: AbortSignal.timeout(30_000)
+  });
+  assert.equal(treeResponse.status, 200, `${repository}: public default-branch tree unavailable`);
+  const tree = await treeResponse.json();
+  for (const item of tree.tree || []) {
+    const extension = [...imageTypes.keys()].find((value) => item.path?.toLowerCase().endsWith(value));
+    if (item.type !== "blob" || !extension || !/^docs\//i.test(item.path)) continue;
+    sourceImages.set(`https://raw.githubusercontent.com/${owner}/${repository}/main/${item.path}`, imageTypes.get(extension));
+  }
   const requiredTag = requiredMp4.get(repository);
   if (requiredTag) {
     const release = releases.find((item) => item.tag_name === requiredTag);
@@ -96,4 +117,9 @@ for (const repository of repositories) {
   }
 }
 
-console.log(`Verified ${releaseMedia} logged-out GitHub release media downloads (${forcedDownloads} CDN-forced attachments with correct API MIME) and ${readmeThumbnails} README thumbnails.`);
+const sourceEntries = [...sourceImages.entries()];
+for (let index = 0; index < sourceEntries.length; index += 10) {
+  await Promise.all(sourceEntries.slice(index, index + 10).map(([url, type]) => publicAsset(url, type)));
+}
+
+console.log(`Verified ${releaseMedia} logged-out GitHub release media downloads (${forcedDownloads} CDN-forced attachments with correct API MIME), ${readmeThumbnails} README thumbnails, and ${sourceImages.size} tracked documentation images.`);
