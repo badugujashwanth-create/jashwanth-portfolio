@@ -16,6 +16,8 @@
     "check:links": "node scripts/check-links.mjs",
     "check:media": "vitest run tests/media-integrity.test.ts",
     "check:media:public": "node scripts/check-public-media.mjs",
+    "check:media:browsers": "node scripts/verify-public-playback.mjs",
+    "check:media:github": "node scripts/check-github-media.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run build && npm run check:links"
   },
   "dependencies": {
