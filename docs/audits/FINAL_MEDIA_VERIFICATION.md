@@ -24,7 +24,7 @@ The later authorized serial project program replaced Neutro and HYD VNTG media o
 ## Repairs delivered
 
 1. Moved the existing accepted recordings, posters, and captions into stable same-origin `/public/media/<project>/` packages.
-2. Transcoded those same recordings to fast-start H.264 MP4; no content was re-recorded.
+2. During Phase 2, transcoded those same recordings to fast-start H.264 MP4 without re-recording content.
 3. Preserved the original WebM files and added MP4-first/WebM-second sources.
 4. Replaced raw GitHub video/caption URLs and narrowed CSP `media-src` to `'self'`.
 5. Added responsive 16:9 media containment, mobile-safe rendering, `playsInline`, captions, loading/error status, and direct recovery links.
@@ -34,6 +34,8 @@ The later authorized serial project program replaced Neutro and HYD VNTG media o
 9. Added the complete current MP4/WebM/VTT/poster package to Cricket API v1.0.3.
 10. Repaired public profile and project READMEs with clickable thumbnails plus direct same-origin MP4, WebM, and captions.
 11. Added repeatable local-integrity, production HTTP/MIME, GitHub media, and logged-out browser checks.
+12. Replaced the superseded 55-second ParkAlert and ShadowOps captures with reviewed 3:08 and 3:20 narrated candidate walkthroughs after their workflows changed.
+13. Reconciled the playback verifier with the new durations and made lazy project-image decode checks deterministic.
 
 ## Verification matrix
 
@@ -83,12 +85,14 @@ Portfolio media commits:
 - `9179a53` — image rendering and fullscreen browser coverage
 - `b14dce6` — tracked documentation-image verification
 - `097f859` — HYD VNTG v1.0.0 media, case-study, and production-delivery synchronization
+- `46f5f93` — ParkAlert/ShadowOps candidate media and 15-repository program reconciliation
+- `6c22c1d` — current-duration and deterministic image-decode playback verification
 
 README media-link commits:
 
 | Repository                  | Public commit |
 | --------------------------- | ------------- |
-| Profile                     | `dee3831`     |
+| Profile                     | `6f61f08`     |
 | NiyamGuard                  | `7b53786`     |
 | NIRA                        | `a67abe8`     |
 | Social Media Control Center | `5b46405`     |
@@ -98,9 +102,9 @@ README media-link commits:
 | Zettalogix                  | `03ae9e3`     |
 | WorkHub OS                  | `7a05270`     |
 | Neutro                      | `54463e9`     |
-| ShadowOps                   | `2370f42`     |
+| ShadowOps                   | candidate `03a7389` in PR #2 |
 | HYD VNTG                    | `769a1e2`     |
-| ParkAlert                   | `3df5686`     |
+| ParkAlert                   | candidate `c063268` in PR #3 |
 
 ## Honest limitations and deferred recording work
 
