@@ -131,7 +131,7 @@ const source: Project[] = [
     targetUser: "Cricket viewers exploring player, team, match, comparison, and leaderboard questions.",
     solution: "A React client and Express API classify questions, normalize entities, compute typed dataset responses, and preserve an explicit unsupported/degraded path.",
     contribution: "Built the routing and response contracts, dataset paths, web integration, regression cases, startup/status checks, and degraded-retrieval fix.",
-    status: "API v1.0.2 and web v1.0.0 released prototypes",
+    status: "API v1.0.3 and web v1.0.0 released prototypes",
     technologies: ["React", "Express", "Node.js", "Local datasets", "Optional Chroma"],
     categories: ["AI", "Data", "Full Stack"],
     repositoryUrl: `${owner}/cricket-chatbot-api`,
