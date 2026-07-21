@@ -4,7 +4,7 @@ Verified: 21 July 2026 (Asia/Calcutta)
 
 Canonical site: <https://jashwanth-portfolio-ten.vercel.app>
 
-Portfolio source: current `main` plus `phase3-hyd-vntg-portfolio-sync` (public merge pending)
+Portfolio source: `jashwanth-portfolio` at `097f859`
 
 ## Scope and result
 
@@ -36,7 +36,7 @@ Every package below uses the exact four deployed paths `demo.mp4`, `demo.webm`, 
 | WorkHub OS                  | `Work_OS/docs/demo/demo.*`                              | `/media/workhub/`                     | 5:42.728 | VP9/Opus      | H.264/AAC       | 13,451,842 / 10,648,238 / 1,491 / 375,245 | Pass                      | Reused; transcoded only                              |
 | Neutro                      | `Neutro/docs/demo/demo.*`                               | `/media/neutro/`                      | 3:15.920 | VP8/Opus      | H.264/AAC       | 4,999,311 / 13,897,506 / 1,760 / 72,853   | Pass                      | Phase 3 narrated release walkthrough                 |
 | ShadowOps                   | `shadowops-hackathon/docs/demo/demo.*`                  | `/media/shadowops/`                   | 0:55.040 | VP8, no audio | H.264, no audio | 552,893 / 2,413,675 / 409 / 50,519        | Pass                      | Reused; captioned; no fake audio added               |
-| HYD VNTG                    | `thrifty_vintagegarage/docs/demo/demo.*`                | `/media/hyd-vntg/`                    | 3:03.120 | VP8/Opus      | H.264/AAC       | 4,962,016 / 11,684,036 / 1,294 / 428,569 | Pending deploy            | Phase 3 narrated v1.0.0 workflow replacement         |
+| HYD VNTG                    | `thrifty_vintagegarage/docs/demo/demo.*`                | `/media/hyd-vntg/`                    | 3:03.120 | VP8/Opus      | H.264/AAC       | 4,962,016 / 11,684,036 / 1,294 / 428,569 | Pass                      | Phase 3 narrated v1.0.0 workflow replacement         |
 | ParkAlert                   | `Parking-Alert-/docs/demo/demo.*`                       | `/media/parkalert/`                   | 0:55.120 | VP8, no audio | H.264, no audio | 416,791 / 1,636,905 / 420 / 72,228        | Pass                      | Reused; captioned; no fake audio added               |
 | Cricket Web poster          | `Cricket_chatbot_frontend/docs/demo/demo-thumbnail.png` | `/media/cricket-web/poster.png`       |      n/a | n/a           | n/a             | 154,863                                   | Pass                      | Poster retained; outdated web recording not promoted |
 
