@@ -45,6 +45,9 @@ Next.js statically generates every route. React Three Fiber is dynamically loade
 - [Performance report](docs/PERFORMANCE_REPORT.md)
 - [Accessibility report](docs/ACCESSIBILITY_REPORT.md)
 - [Security review](docs/SECURITY_REVIEW.md)
+- [Public remote reconciliation](docs/audits/PUBLIC_REMOTE_RECONCILIATION.md)
+- [Public media inventory](docs/audits/PUBLIC_MEDIA_INVENTORY.md)
+- [Final media verification](docs/audits/FINAL_MEDIA_VERIFICATION.md)
 - [![Watch the portfolio walkthrough](docs/demo/demo-thumbnail.png)](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo.mp4)
 - [Open MP4](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo.mp4) · [Download WebM](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo.webm) · [Captions](https://jashwanth-portfolio-ten.vercel.app/media/portfolio/demo-captions.vtt) · [Script](docs/demo/DEMO_SCRIPT.md) · [Storyboard](docs/demo/STORYBOARD.md)
 
