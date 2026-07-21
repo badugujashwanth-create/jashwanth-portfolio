@@ -74,6 +74,21 @@ function vttEndSeconds(vtt: string) {
 }
 
 describe("public media integrity", () => {
+  test("project and social images keep usable delivery dimensions", () => {
+    for (const directory of ["assets/projects", "assets/social"]) {
+      for (const filename of readdirSync(path.join(publicRoot, directory))) {
+        if (!filename.endsWith(".png")) continue;
+        const png = readFileSync(path.join(publicRoot, directory, filename));
+        const width = png.readUInt32BE(16);
+        const height = png.readUInt32BE(20);
+        const ratio = width / height;
+        expect(width, `${filename}: image is too narrow`).toBeGreaterThanOrEqual(1200);
+        expect(ratio, `${filename}: extreme aspect ratio will crop essential content`).toBeGreaterThanOrEqual(1.5);
+        expect(ratio, `${filename}: extreme aspect ratio will crop essential content`).toBeLessThanOrEqual(2);
+      }
+    }
+  });
+
   test("all project players use same-origin media and avoid delivery anti-patterns", () => {
     for (const project of projects) {
       for (const value of Object.values(project.video)) {
