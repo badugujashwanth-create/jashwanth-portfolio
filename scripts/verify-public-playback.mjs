@@ -22,6 +22,27 @@ async function verifyMode({ name, executablePath, contextOptions = {}, args = []
   const context = await browser.newContext(contextOptions);
   const page = await context.newPage();
   let cdp;
+
+  await page.goto(`${baseUrl}/`, { waitUntil: "domcontentloaded", timeout: 60_000 });
+  const homepageImages = page.locator("img[src^='/assets/projects/']");
+  assert.ok(await homepageImages.count() >= 6, `${name}: homepage project images missing`);
+  for (let index = 0; index < await homepageImages.count(); index += 1) {
+    const image = homepageImages.nth(index);
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate((element) => element.complete
+      ? Promise.resolve()
+      : new Promise((resolve, reject) => {
+          const timer = setTimeout(() => reject(new Error("image timeout")), 15_000);
+          element.addEventListener("load", () => { clearTimeout(timer); resolve(); }, { once: true });
+          element.addEventListener("error", (error) => { clearTimeout(timer); reject(error); }, { once: true });
+        }));
+    const imageState = await image.evaluate((element) => ({ height: element.naturalHeight, width: element.naturalWidth }));
+    const imageBox = await image.boundingBox();
+    assert.ok(imageState.width > 0 && imageState.height > 0, `${name}: homepage image failed to decode`);
+    assert.ok(imageBox && imageBox.width > 0 && imageBox.height > 0, `${name}: homepage image collapsed`);
+    assert.ok(imageBox.x >= 0 && imageBox.x + imageBox.width <= page.viewportSize().width + 1, `${name}: homepage image overflow`);
+  }
+
   if (throttle) {
     cdp = await context.newCDPSession(page);
     await cdp.send("Network.enable");
@@ -64,6 +85,14 @@ async function verifyMode({ name, executablePath, contextOptions = {}, args = []
     assert.equal(metadata.tracks, 1, `${name}/${slug}: captions track missing`);
     assert.ok(metadata.readyState >= 1, `${name}/${slug}: metadata unavailable`);
 
+    const heroImage = page.locator(".case-poster img");
+    await heroImage.waitFor({ state: "visible" });
+    const heroState = await heroImage.evaluate((element) => ({ complete: element.complete, height: element.naturalHeight, width: element.naturalWidth }));
+    const heroBox = await heroImage.boundingBox();
+    assert.ok(heroState.complete && heroState.width > 0 && heroState.height > 0, `${name}/${slug}: project image failed to decode`);
+    assert.ok(heroBox && heroBox.width > 0 && heroBox.height > 0, `${name}/${slug}: project image collapsed`);
+    assert.ok(heroBox.x >= 0 && heroBox.x + heroBox.width <= page.viewportSize().width + 1, `${name}/${slug}: project image overflow`);
+
     const box = await video.boundingBox();
     assert.ok(box && box.width > 250 && box.height > 140, `${name}/${slug}: collapsed video`);
     assert.ok(box.x >= 0 && box.x + box.width <= page.viewportSize().width + 1, `${name}/${slug}: horizontal overflow`);
@@ -97,6 +126,24 @@ async function verifyMode({ name, executablePath, contextOptions = {}, args = []
     assert.ok(links.some((link) => link.text === "Open MP4" && link.href?.endsWith("demo.mp4")), `${name}/${slug}: MP4 link missing`);
     assert.ok(links.some((link) => link.text === "Download WebM" && link.download), `${name}/${slug}: download link missing`);
     assert.ok(links.some((link) => link.text === "Read captions" && link.href?.endsWith("demo-captions.vtt")), `${name}/${slug}: caption link missing`);
+
+    if (slug === "niyamguard") {
+      await video.evaluate((element) => {
+        element.addEventListener("click", async () => {
+          try {
+            await element.requestFullscreen();
+            element.dataset.fullscreenCheck = "entered";
+          } catch (error) {
+            element.dataset.fullscreenCheck = `error:${error instanceof Error ? error.name : "unknown"}`;
+          }
+        }, { once: true });
+      });
+      await video.click({ position: { x: 100, y: 100 } });
+      await page.waitForFunction((element) => element.dataset.fullscreenCheck, await video.elementHandle(), { timeout: 10_000 });
+      assert.equal(await video.getAttribute("data-fullscreen-check"), "entered", `${name}: native fullscreen failed`);
+      assert.equal(await page.evaluate(() => Boolean(document.fullscreenElement)), true, `${name}: fullscreen element missing`);
+      await page.evaluate(() => document.exitFullscreen());
+    }
 
     if (throttle && cdp) {
       await cdp.send("Network.emulateNetworkConditions", { offline: false, latency: 0, downloadThroughput: -1, uploadThroughput: -1 });
