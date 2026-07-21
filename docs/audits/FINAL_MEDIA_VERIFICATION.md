@@ -10,7 +10,7 @@ Detailed inventory: [PUBLIC_MEDIA_INVENTORY.md](PUBLIC_MEDIA_INVENTORY.md)
 
 Phase 2 media visibility and delivery repair is complete. No new product features, Product Design exploration, screenshots, or recordings were created.
 
-The later authorized serial project program replaced Neutro and HYD VNTG media only after their qualified workflows made the Phase 2 captures outdated. Neutro is publicly verified; the current HYD VNTG synchronization branch carries the v1.0.0 narrated package and marks production delivery pending until merge/deploy checks pass.
+The later authorized serial project program replaced Neutro and HYD VNTG media only after their qualified workflows made the Phase 2 captures outdated. Both replacements are publicly verified. HYD VNTG production serves the v1.0.0 package with native MP4/WebM/VTT/PNG MIME types; logged-out desktop and mobile Chromium loaded all seven caption cues, reached media ready state 4, and played the 183.12-second video inside the viewport.
 
 - All 75 canonical portfolio image/video/caption assets return HTTP 200, non-zero bytes, and their exact expected MIME type while logged out.
 - All 11 case-study players work in logged-out Chrome desktop, Edge desktop with WebGL disabled, and a throttled Chrome mobile context.
@@ -82,6 +82,7 @@ Portfolio media commits:
 - `c93b04e` — HYD VNTG poster aspect-ratio repair
 - `9179a53` — image rendering and fullscreen browser coverage
 - `b14dce6` — tracked documentation-image verification
+- `097f859` — HYD VNTG v1.0.0 media, case-study, and production-delivery synchronization
 
 README media-link commits:
 
