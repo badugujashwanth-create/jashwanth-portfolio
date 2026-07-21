@@ -13,7 +13,7 @@ const projects = [
   ["workhub-os", 342],
   ["neutro", 195.92],
   ["shadowops", 55],
-  ["hyd-vntg-storefront", 58],
+  ["hyd-vntg-storefront", 183.12],
   ["parking-alert", 55]
 ];
 

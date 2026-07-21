@@ -18,7 +18,7 @@ const recordings = [
   { directory: "workhub", duration: 342.72, narrated: true },
   { directory: "neutro", duration: 195.92, narrated: true },
   { directory: "shadowops", duration: 55.04, narrated: false },
-  { directory: "hyd-vntg", duration: 58.24, narrated: false },
+  { directory: "hyd-vntg", duration: 183.12, narrated: true },
   { directory: "parkalert", duration: 55.12, narrated: false }
 ] as const;
 
@@ -104,7 +104,7 @@ describe("public media integrity", () => {
         const file = assertExactPath(`media/${recording.directory}/${filename}`);
         expect(existsSync(file)).toBe(true);
         expect(statSync(file).size).toBeGreaterThan(100);
-        expect(readFileSync(file, "utf8").slice(0, 100)).not.toContain("version https://git-lfs.github.com/spec");
+        expect(readFileSync(file).subarray(0, 100).toString("utf8")).not.toContain("version https://git-lfs.github.com/spec");
       }
     }
     expect(existsSync(assertExactPath("media/cricket-web/poster.png"))).toBe(true);

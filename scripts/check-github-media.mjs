@@ -24,7 +24,9 @@ const requiredMp4 = new Map([
   ["cricket-chatbot-api", "v1.0.3"],
   ["heart-analysis", "v1.0.0"],
   ["zettalogix-migration-suite", "v0.3.0"],
-  ["workhub-os", "v1.1.0"]
+  ["workhub-os", "v1.1.0"],
+  ["Neutro", "v0.6.0"],
+  ["hyd-vntg-storefront", "v1.0.0"]
 ]);
 const expectedTypes = new Map([
   [".mp4", "video/mp4"],
@@ -43,12 +45,31 @@ const imageTypes = new Map([
 
 let forcedDownloads = 0;
 
+async function fetchWithRetry(url, options = {}, attempts = 3) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(url, { ...options, signal: AbortSignal.timeout(30_000) });
+      if (attempt < attempts && (response.status === 429 || response.status >= 500)) {
+        await response.body?.cancel();
+        throw new Error(`${url}: transient HTTP ${response.status}`);
+      }
+      return response;
+    } catch (error) {
+      lastError = error;
+      if (attempt === attempts) throw error;
+      await new Promise((resolve) => setTimeout(resolve, attempt * 500));
+    }
+  }
+  throw lastError;
+}
+
 async function publicAsset(url, expectedType, allowAttachment = false) {
-  const response = await fetch(url, { method: "HEAD", redirect: "follow", signal: AbortSignal.timeout(30_000) });
+  const response = await fetchWithRetry(url, { method: "HEAD", redirect: "follow", signal: AbortSignal.timeout(30_000) });
   const type = response.headers.get("content-type")?.split(";")[0].toLowerCase();
   let size = Number(response.headers.get("content-length") || 0);
   if (response.status === 200 && size <= 0) {
-    const body = await fetch(url, { headers: { Range: "bytes=0-0" }, redirect: "follow", signal: AbortSignal.timeout(30_000) });
+    const body = await fetchWithRetry(url, { headers: { Range: "bytes=0-0" }, redirect: "follow", signal: AbortSignal.timeout(30_000) });
     const range = body.headers.get("content-range")?.match(/\/(\d+)$/);
     size = range ? Number(range[1]) : (await body.arrayBuffer()).byteLength;
   }
@@ -63,11 +84,11 @@ let readmeThumbnails = 0;
 const sourceImages = new Map();
 for (const repository of repositories) {
   const readmeUrl = `https://raw.githubusercontent.com/${owner}/${repository}/main/README.md`;
-  const readmeResponse = await fetch(readmeUrl, { signal: AbortSignal.timeout(30_000) });
+  const readmeResponse = await fetchWithRetry(readmeUrl, { signal: AbortSignal.timeout(30_000) });
   assert.equal(readmeResponse.status, 200, `${repository}: public README unavailable`);
   const readme = await readmeResponse.text();
   assert.doesNotMatch(readme, /github\.com\/[^\s)]+\/blob\/[^\s)]+\.(?:mp4|webm|vtt)/i, `${repository}: media uses a GitHub HTML wrapper`);
-  assert.doesNotMatch(readme, /\]\(docs\/demo\/demo\.webm\)/i, `${repository}: thumbnail links to GitHub-rendered WebM`);
+  assert.doesNotMatch(readme, /\[!\[[^\]]*\]\([^)]*(?:demo-thumbnail|poster)[^)]*\)\]\(docs\/demo\/demo\.webm\)/i, `${repository}: thumbnail links to GitHub-rendered WebM`);
 
   if (repository !== owner) {
     assert.match(readme, /jashwanth-portfolio-ten\.vercel\.app\/(?:media|work)\//, `${repository}: verified public media link missing`);
@@ -81,14 +102,14 @@ for (const repository of repositories) {
     readmeThumbnails += 1;
   }
 
-  const releasesResponse = await fetch(`https://api.github.com/repos/${owner}/${repository}/releases?per_page=100`, {
+  const releasesResponse = await fetchWithRetry(`https://api.github.com/repos/${owner}/${repository}/releases?per_page=100`, {
     headers: { Accept: "application/vnd.github+json", "User-Agent": "portfolio-media-verifier" },
     signal: AbortSignal.timeout(30_000)
   });
   assert.equal(releasesResponse.status, 200, `${repository}: public releases API unavailable`);
   const releases = await releasesResponse.json();
 
-  const treeResponse = await fetch(`https://api.github.com/repos/${owner}/${repository}/git/trees/main?recursive=1`, {
+  const treeResponse = await fetchWithRetry(`https://api.github.com/repos/${owner}/${repository}/git/trees/main?recursive=1`, {
     headers: { Accept: "application/vnd.github+json", "User-Agent": "portfolio-media-verifier" },
     signal: AbortSignal.timeout(30_000)
   });
