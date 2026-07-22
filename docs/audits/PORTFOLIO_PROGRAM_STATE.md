@@ -31,7 +31,11 @@ Verified on 2026-07-21. This is the final state ledger for the 15-repository pro
 
 ## Human checkpoints
 
-The authoritative list is [MANUAL_ACTIONS.md](../../MANUAL_ACTIONS.md). The release-blocking items are Firebase ownership/security verification for ParkAlert; contributor, ownership, licensing, upstream, and model/CUDA evidence for ShadowOps; WorkHub credential rotation; owner-approved resume publication; manual assistive-technology/device review; custom-domain/analytics decisions; and manual GitHub pin ordering.
+The authoritative list is [MANUAL_ACTIONS.md](../../MANUAL_ACTIONS.md). The release-blocking items are Firebase ownership/security verification for ParkAlert; contributor, ownership, licensing, upstream, and model/CUDA evidence for ShadowOps; WorkHub credential rotation; owner-approved resume publication; manual assistive-technology/device review; and custom-domain/analytics decisions. The intended six-repository GitHub pin set was verified on 22 July 2026 and is no longer outstanding.
+
+## Post-release drift audit
+
+On 22 July 2026, production homepage, recruiter, ParkAlert MP4, and ShadowOps MP4 requests remained HTTP 200 with their expected MIME types and current byte sizes. Portfolio/profile default branches and both held candidate branches were clean and matched their upstream tracking refs. The superseded conflicting ParkAlert PR #1 was closed in favor of held PR #3. Private duplicate PR #1 was closed without merging or deleting its audit branch, preserving the documented private disposition. Only ParkAlert PR #3 and ShadowOps PR #2 remain open, mergeable, green, and intentionally held.
 
 ## Media inventory
 
